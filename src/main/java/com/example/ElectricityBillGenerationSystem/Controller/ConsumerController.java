@@ -2,9 +2,12 @@ package com.example.ElectricityBillGenerationSystem.Controller;
 
 import com.example.ElectricityBillGenerationSystem.DTOs.Bill;
 import com.example.ElectricityBillGenerationSystem.Model.Consumer;
+import com.example.ElectricityBillGenerationSystem.Model.Reading;
 import com.example.ElectricityBillGenerationSystem.Service.ConsumerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/consumer")
@@ -22,6 +25,7 @@ public class ConsumerController {
     public Bill getBill(@PathVariable int id){
         return consumerService.getBill(id);
     }
+
 
 
 }

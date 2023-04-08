@@ -2,6 +2,7 @@ package com.example.ElectricityBillGenerationSystem.Service;
 
 
 import com.example.ElectricityBillGenerationSystem.DTOs.Bill;
+import com.example.ElectricityBillGenerationSystem.Model.Admin;
 import com.example.ElectricityBillGenerationSystem.Model.Consumer;
 import com.example.ElectricityBillGenerationSystem.Model.Reading;
 import com.example.ElectricityBillGenerationSystem.Model.Slab;
@@ -31,18 +32,22 @@ public class ConsumerService {
 
     public String addConsumer(Consumer consumer) {
         Consumer consumer1 =new Consumer();
-        consumer1.setCustomerName(consumer.getCustomerName());
+        consumer1.setName(consumer.getName());
         consumer1.setEmail(consumer.getEmail());
         consumer1.setPassword(consumer.getPassword());
 
         Reading reading = new Reading();
-        reading.setConsumer(consumer);
+        Admin admin = consumer1.getAdmin();
+
+        reading.setConsumer(consumer1);
         reading.setCurrentReading(0);
+        reading.setAdmin(admin);
 
         List<Reading> readingList = consumer1.getReadingList();
         readingList.add(reading);
+        consumer1.setReadingList(readingList);
 
-        readingRepository.save(reading);
+
         consumerRepository.save(consumer1);
 
         return "Registration Successful!";
@@ -54,7 +59,7 @@ public class ConsumerService {
         Bill bill = new Bill();
 
         bill.setCustomer_ID(id);
-        bill.setCustomer_Name(consumer.getCustomerName());
+        bill.setCustomer_Name(consumer.getName());
 
         //Units
         List<Reading> readingList = consumer.getReadingList();
@@ -83,4 +88,7 @@ public class ConsumerService {
 
         return bill;
     }
+
+
+
 }

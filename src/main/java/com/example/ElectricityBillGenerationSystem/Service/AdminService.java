@@ -48,6 +48,11 @@ public class AdminService {
 
         readingList.add(reading);
 
+        consumer.setReadingList(readingList);
+        consumer.setSlab(admin.getSlab());
+
+        consumerRepository.save(consumer);
+
         return "Reading Set for customer!";
     }
 

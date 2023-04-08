@@ -20,7 +20,7 @@ public class Consumer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String CustomerName;
+    private String name;
 
     private String email;
 
