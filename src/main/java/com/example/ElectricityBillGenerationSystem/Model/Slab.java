@@ -27,4 +27,8 @@ public class Slab {
     @JoinColumn
     private Admin admin;
 
+    @OneToOne(mappedBy = "slab", cascade = CascadeType.ALL)
+    private Consumer consumer;
+
+
 }

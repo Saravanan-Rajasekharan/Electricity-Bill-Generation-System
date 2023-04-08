@@ -26,8 +26,6 @@ public class Consumer {
 
     private String password;
 
-    private int unit_Consumption;
-
 
     @OneToMany(mappedBy = "consumer", cascade = CascadeType.ALL)
     private List<Reading> readingList = new ArrayList<>();
@@ -35,6 +33,10 @@ public class Consumer {
     @ManyToOne
     @JoinColumn
     private Admin admin;
+
+    @OneToOne
+    @JoinColumn
+    private Slab slab;
 
 
 
